@@ -108,7 +108,7 @@ export const ProductTable = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => {
+            {data.length > 0 ? data.map((item, index) => {
               return <tr key={index}>
                 <td>{item.productName}</td>
                 <td>{item.contractPeriod}</td>
@@ -121,7 +121,7 @@ export const ProductTable = () => {
                   <button className='btn btn-danger' onClick={() => handleDelete(item.productId)} title="Delete the product">Delete</button>
                 </td>
               </tr>
-            })}
+            }): <h3 className='text-center mt-3'>No Product Details Found</h3> }
           </tbody>
         </table>
       </div>

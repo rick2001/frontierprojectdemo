@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import {addProduct} from "../redux/counter/counterSlice"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 export const ProductForm = () => {
+
+  const product = useSelector((state)=>state.counter.products);
+
 
   // in counterSlice all functions can be used
   const dispatch = useDispatch();
@@ -29,10 +32,18 @@ export const ProductForm = () => {
     <div className='container my-5'>
       <h1 className='text-center'>Add New Product</h1>
       <form>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label class="form-label fw-bold" htmlFor="productId">Product Id:</label>
           <input type="number" className="form-control" value={newData.productId} id="productId" onChange={handleOnChange} />
+        </div> */}
+
+
+        <div className="mb-3">
+          <label class="form-label fw-bold" htmlFor="productId">Product Id:</label>
+          <input type="number" className="form-control" value={product.length+1} id="productId"/>
         </div>
+
+
         <div className="form-group fw-bold">
           <label class="form-label" htmlFor="productName">Product Name:</label>
           <input type="text" className="form-control" value={newData.productName} id="productName" onChange={handleOnChange} />
