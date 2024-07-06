@@ -42,7 +42,7 @@ export const ProductForm = () => {
           <input type="text" className="form-control" value={newData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
         </div>
         <div className="form-group fw-bold">
-          <label class="form-label" htmlFor="cropYear">Crop Yea:</label>
+          <label class="form-label" htmlFor="cropYear">Crop Year:</label>
           <input type="text" className="form-control" value={newData.cropYear} id="cropYear" onChange={handleOnChange} />
         </div>
         <div className="form-group fw-bold">
