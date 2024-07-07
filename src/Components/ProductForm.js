@@ -28,6 +28,10 @@ export const ProductForm = () => {
     dispatch(addProduct(newData));
     navigate("/")
   }
+
+  const handleOnReset=()=>{
+    setNewData({ productId: product.length+1, productName: "", contractPeriod: "", cropYear: "", price: "" })
+  }
   return (
     <div className='container my-5'>
       <h1 className='text-center'>Add New Product</h1>
@@ -40,7 +44,7 @@ export const ProductForm = () => {
 
         <div className="mb-3">
           <label class="form-label fw-bold" htmlFor="productId">Product Id:</label>
-          <input type="number" className="form-control" value={product.length+1} id="productId"/>
+          <input type="number" className="form-control" value={product.length+1} id="productId" readOnly/>
         </div>
 
 
@@ -61,7 +65,8 @@ export const ProductForm = () => {
           <input type="text" className="form-control" value={newData.price} id="price" onChange={handleOnChange} />
         </div>
       </form>
-      <button className="btn btn-primary mt-2" onClick={handleOnClick}>Save</button>
+      <button disabled={newData.productName.length===0 || newData.contractPeriod.length===0 || newData.cropYear.length===0 || newData.price.length===0} className="btn btn-primary mt-3 mx-2" onClick={handleOnClick}>Save</button>
+      <button className="btn btn-warning mt-3 mx-2" onClick={handleOnReset}>Reset</button>
 
 
 
