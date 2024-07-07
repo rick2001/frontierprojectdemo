@@ -6,7 +6,8 @@ import { deleteProduct, updateProduct } from '../redux/counter/counterSlice'
 export const ProductTable = () => {
 
   // useRef Hook variable. using this I can give the reference to the current object
-  const ref = useRef(null);
+  const ref = useRef(null);  // for opening the modal 
+  const refClose = useRef(null); // for closing the modal
 
   // getting data from counterSilce
   const data = useSelector((state) => state.counter.products)
@@ -46,6 +47,7 @@ export const ProductTable = () => {
   const handleSave = () => {
     // console.log("This is my edited data-> ",editData);
     dispatch(updateProduct(editData));
+    refClose.current.click(); // modal will close
 
   }
 
@@ -88,7 +90,7 @@ export const ProductTable = () => {
 
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
             </div>
           </div>
