@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 export const ProductTable = () => {
 
-  // useRef Hook variable. using this I can give the reference to the current object
+  // useRef Hook variable.
   const ref = useRef(null);  // for opening the modal 
   const refClose = useRef(null); // for closing the modal
 
