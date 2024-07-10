@@ -1,7 +1,8 @@
-import React, {useState, useRef} from 'react'
+import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteProduct, updateProduct } from '../redux/counter/counterSlice'
+import { toast } from 'react-toastify'
 
 export const ProductTable = () => {
 
@@ -22,6 +23,9 @@ export const ProductTable = () => {
   // handeling the deleting functionality
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
+    toast.error("Deleted Successfully", {
+      autoClose: 2000
+    })
   }
 
   // handeling the edited data functionality
@@ -48,6 +52,9 @@ export const ProductTable = () => {
     // console.log("This is my edited data-> ",editData);
     dispatch(updateProduct(editData));
     refClose.current.click(); // modal will close
+    toast.success("Updated successfully",{
+      autoClose: 2000
+    })
 
   }
 
@@ -82,7 +89,7 @@ export const ProductTable = () => {
                   <input type="text" className="form-control" value={editData.cropYear} id="cropYear" onChange={handleOnChange} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="price">Price</label>
+                  <label htmlFor="price">Price (&#8377;)</label>
                   <input type="text" className="form-control" value={editData.price} id="price" onChange={handleOnChange} />
                 </div>
               </form>
@@ -98,15 +105,17 @@ export const ProductTable = () => {
       </div>
 
       <div className="container">
-        <h1 className='text-center'>Product Details</h1>
-        <Link to="/create" className='btn btn-success my-3'>Create +</Link>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom:"20px" }}>
+          <h1>Product Details</h1>
+          <Link to="/create" className='btn btn-success'>Add New +</Link>
+        </div>
         <table className='table'>
           <thead>
             <tr>
               <th>Product Name</th>
               <th>Contract Period</th>
               <th>Crop Year</th>
-              <th>Price</th>
+              <th>Price (&#8377;)</th>
             </tr>
           </thead>
           <tbody>
@@ -123,7 +132,7 @@ export const ProductTable = () => {
                   <button className='btn btn-danger' onClick={() => handleDelete(item.productId)} title="Delete the product">Delete</button>
                 </td>
               </tr>
-            }): <h3 className='text-center mt-3'>No Product Details Found</h3> }
+            }) : <h3 className='text-center mt-3'>No Product Details Found</h3>}
           </tbody>
         </table>
       </div>
