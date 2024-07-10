@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   products: [
-    { productId: 1, productName: 'Wheat', contractPeriod: '6 months', cropYear: '2023', price: '1000' },
-    { productId: 2, productName: 'Corn', contractPeriod: '1 year', cropYear: '2022', price: '800' },
-    { productId: 3, productName: 'Rice', contractPeriod: '1 year', cropYear: '2021', price: '1200' },
-    { productId: 4, productName: 'Daal', contractPeriod: '7 year', cropYear: '2020', price: '700' }
+    { productId: 1, productName: 'Wheat', contractPeriod: 'Jul 24', cropYear: '2023', price: '1000' },
+    { productId: 2, productName: 'Corn', contractPeriod: 'Aug 24', cropYear: '2022', price: '800' },
+    { productId: 3, productName: 'Rice', contractPeriod: 'Sep 24', cropYear: '2021', price: '1200' },
+    { productId: 4, productName: 'Daal', contractPeriod: 'Jan 24', cropYear: '2020', price: '700' }
   ]
 }
 
