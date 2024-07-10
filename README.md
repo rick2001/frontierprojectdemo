@@ -1,3 +1,6 @@
+# Home Screen
+<img width="960" alt="image" src="https://github.com/rick2001/frontierprojectdemo/assets/76494011/5695d6c7-4dfe-4f29-8803-0b1b16d76c15">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
