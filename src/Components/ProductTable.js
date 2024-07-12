@@ -59,6 +59,8 @@ export const ProductTable = () => {
   }
 
 
+  const years = [2022, 2023, 2024, 2025, 2026, 2027, 2028];
+
 
   return (
     <>
@@ -76,29 +78,44 @@ export const ProductTable = () => {
             <div className="modal-body">
 
               <form>
-                <div className="form-group">
-                  <label htmlFor="productName">Product Name</label>
+
+                <div className="form-group fw-bold">
+                  <label htmlFor="productName">Product Name:</label>
                   <input type="text" className="form-control" value={editData.productName} id="productName" onChange={handleOnChange} />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="contractPeriod">Contract Period</label>
+
+                <div className="form-group fw-bold">
+                  <label htmlFor="contractPeriod">Contract Period:</label>
                   <input type="text" className="form-control" value={editData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
                 </div>
-                <div className="form-group">
+
+                {/* <div className="form-group">
                   <label htmlFor="cropYear">Crop Year</label>
                   <input type="text" className="form-control" value={editData.cropYear} id="cropYear" onChange={handleOnChange} />
+                </div> */}
+
+                <div className="form-group fw-bold">
+                  <label htmlFor="cropYear">Crop Year:</label>
+                  <select className="form-control" value={editData.cropYear} id="cropYear" onChange={handleOnChange}>
+                    <option value="">Select Crop Year</option>
+                    {years.map((year) => (
+                      <option key={year} value={year}>{year}</option>
+                    ))}
+                  </select>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="price">Price (&#8377;)</label>
+
+                <div className="form-group fw-bold">
+                  <label htmlFor="price">Price (&#8377;):</label>
                   <input type="text" className="form-control" value={editData.price} id="price" onChange={handleOnChange} />
                 </div>
+
               </form>
 
 
             </div>
             <div className="modal-footer">
               <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
+              <button type="button" className="btn btn-primary" onClick={handleSave}>Update</button>
             </div>
           </div>
         </div>

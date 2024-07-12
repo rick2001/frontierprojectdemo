@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
-import {addProduct} from "../redux/counter/counterSlice"
+import React, { useState } from 'react'
+import { addProduct } from "../redux/counter/counterSlice"
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 export const ProductForm = () => {
 
-  const product = useSelector((state)=>state.counter.products);
+  const product = useSelector((state) => state.counter.products);
 
 
   // in counterSlice all functions can be used
@@ -29,43 +29,63 @@ export const ProductForm = () => {
     navigate("/")
   }
 
-  const handleOnReset=()=>{
-    setNewData({ productId: product.length+1, productName: "", contractPeriod: "", cropYear: "", price: "" })
+  // resetting the form
+  const handleOnReset = () => {
+    setNewData({ productId: product.length + 1, productName: "", contractPeriod: "", cropYear: "", price: "" })
   }
+
+  const years = [2022, 2023, 2024, 2025, 2026, 2027, 2028];
   return (
     <div className='container my-5'>
       <h1 className='text-center'>Add New Product</h1>
       <form>
         {/* <div className="mb-3">
-          <label class="form-label fw-bold" htmlFor="productId">Product Id:</label>
+          <label className="form-label fw-bold" htmlFor="productId">Product Id:</label>
           <input type="number" className="form-control" value={newData.productId} id="productId" onChange={handleOnChange} />
         </div> */}
 
 
         <div className="mb-3">
-          <label class="form-label fw-bold" htmlFor="productId">Product Id:</label>
-          <input type="number" className="form-control" value={product.length+1} id="productId" readOnly/>
+          <label className="form-label fw-bold" htmlFor="productId">Product Id:</label>
+          <input type="number" className="form-control" value={product.length + 1} id="productId" readOnly />
         </div>
 
 
         <div className="form-group fw-bold">
-          <label class="form-label" htmlFor="productName">Product Name:</label>
+          <label className="form-label" htmlFor="productName">Product Name:</label>
           <input type="text" className="form-control" value={newData.productName} id="productName" onChange={handleOnChange} />
         </div>
+
         <div className="form-group fw-bold">
-          <label class="form-label" htmlFor="contractPeriod">Contract Period:</label>
+          <label className="form-label" htmlFor="contractPeriod">Contract Period:</label>
           <input type="text" className="form-control" value={newData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
         </div>
-        <div className="form-group fw-bold">
-          <label class="form-label" htmlFor="cropYear">Crop Year:</label>
+
+
+        {/* <div className="form-group fw-bold">
+          <label className="form-label" htmlFor="cropYear">Crop Year:</label>
           <input type="text" className="form-control" value={newData.cropYear} id="cropYear" onChange={handleOnChange} />
-        </div>
+        </div> */}
+
+
         <div className="form-group fw-bold">
-          <label class="form-label" htmlFor="price">Price:</label>
+          <label htmlFor="cropYear">Crop Year:</label>
+          <select className="form-control" value={newData.cropYear} id="cropYear" onChange={handleOnChange}>
+            <option value="">Select Crop Year</option>
+            {years.map((year) => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+        </div>
+
+
+        <div className="form-group fw-bold">
+          <label className="form-label" htmlFor="price">Price:</label>
           <input type="text" className="form-control" value={newData.price} id="price" onChange={handleOnChange} />
         </div>
+
       </form>
-      <button disabled={newData.productName.length===0 || newData.contractPeriod.length===0 || newData.cropYear.length===0 || newData.price.length===0} className="btn btn-primary mt-3 mx-2" onClick={handleOnClick}>Save</button>
+      <button disabled={newData.productName.length === 0 || newData.contractPeriod.length === 0 || newData.cropYear.length === 0 || newData.price.length === 0} className="btn btn-primary mt-3 mx-2" onClick={handleOnClick}>Save</button>
       <button className="btn btn-warning mt-3 mx-2" onClick={handleOnReset}>Reset</button>
 
 
