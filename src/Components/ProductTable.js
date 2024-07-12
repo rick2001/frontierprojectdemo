@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 export const ProductTable = () => {
 
-  // useRef Hook variable. using this I can give the reference to the current object
+  // useRef Hook variable.
   const ref = useRef(null);  // for opening the modal 
   const refClose = useRef(null); // for closing the modal
 
@@ -52,7 +52,7 @@ export const ProductTable = () => {
     // console.log("This is my edited data-> ",editData);
     dispatch(updateProduct(editData));
     refClose.current.click(); // modal will close
-    toast.success("Updated successfully",{
+    toast.success("Updated successfully", {
       autoClose: 2000
     })
 
@@ -105,7 +105,7 @@ export const ProductTable = () => {
       </div>
 
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom:"20px" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "30px" }}>
           <h1>Product Details</h1>
           <Link to="/create" className='btn btn-success'>Add New +</Link>
         </div>
