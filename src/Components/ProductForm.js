@@ -14,7 +14,7 @@ export const ProductForm = () => {
   const navigate = useNavigate();
 
   // state variable to store the data
-  const [newData, setNewData] = useState({ productId: "", productName: "", contractPeriod: "", cropYear: "", price: "" })
+  const [newData, setNewData] = useState({ productId: product.length + 1, productName: "", contractPeriod: "", cropYear: "", price: "" })
 
   // set the data of the form in the state variable
   const handleOnChange = (e) => {
@@ -23,9 +23,9 @@ export const ProductForm = () => {
 
   // function to add the data
   const handleOnClick = () => {
-    setNewData({ productId: "", productName: "", contractPeriod: "", cropYear: "", price: "" })
-    console.log(newData);
+    console.log("New Data-> ",newData);
     dispatch(addProduct(newData));
+    setNewData({ productId: "", productName: "", contractPeriod: "", cropYear: "", price: "" })  // making the fields empty after saving
     navigate("/")
   }
 
@@ -34,7 +34,7 @@ export const ProductForm = () => {
     setNewData({ productId: product.length + 1, productName: "", contractPeriod: "", cropYear: "", price: "" })
   }
 
-  const years = [2022, 2023, 2024, 2025, 2026, 2027, 2028];
+  const years = [2024, 2025, 2026, 2027, 2028];
   return (
     <div className='container my-5'>
       <h1 className='text-center'>Add New Product</h1>
@@ -56,9 +56,14 @@ export const ProductForm = () => {
           <input type="text" className="form-control" value={newData.productName} id="productName" onChange={handleOnChange} />
         </div>
 
-        <div className="form-group fw-bold">
+        {/* <div className="form-group fw-bold">
           <label className="form-label" htmlFor="contractPeriod">Contract Period:</label>
           <input type="text" className="form-control" value={newData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
+        </div> */}
+
+        <div className="form-group fw-bold">
+          <label className="form-label" htmlFor="contractPeriod">Contract Period:</label>
+          <input type="date" className="form-control" value={newData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
         </div>
 
 

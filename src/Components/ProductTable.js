@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -47,8 +48,8 @@ export const ProductTable = () => {
   }
 
 
-  // handeling the save button after performing edit operation in modal
-  const handleSave = () => {
+  // handeling the update button after performing edit operation in modal
+  const handleUpdate = () => {
     // console.log("This is my edited data-> ",editData);
     dispatch(updateProduct(editData));
     refClose.current.click(); // modal will close
@@ -59,7 +60,7 @@ export const ProductTable = () => {
   }
 
 
-  const years = [2022, 2023, 2024, 2025, 2026, 2027, 2028];
+  const years = [2024, 2025, 2026, 2027, 2028];
 
 
   return (
@@ -84,9 +85,14 @@ export const ProductTable = () => {
                   <input type="text" className="form-control" value={editData.productName} id="productName" onChange={handleOnChange} />
                 </div>
 
-                <div className="form-group fw-bold">
+                {/* <div className="form-group fw-bold">
                   <label htmlFor="contractPeriod">Contract Period:</label>
                   <input type="text" className="form-control" value={editData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
+                </div> */}
+
+                <div className="form-group fw-bold">
+                  <label htmlFor="contractPeriod">Contract Period:</label>
+                  <input type="date" className="form-control" value={editData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
                 </div>
 
                 {/* <div className="form-group">
@@ -115,7 +121,7 @@ export const ProductTable = () => {
             </div>
             <div className="modal-footer">
               <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={handleSave}>Update</button>
+              <button type="button" className="btn btn-primary" onClick={handleUpdate}>Update</button>
             </div>
           </div>
         </div>
@@ -139,7 +145,7 @@ export const ProductTable = () => {
             {data.length > 0 ? data.map((item, index) => {
               return <tr key={index}>
                 <td>{item.productName}</td>
-                <td>{item.contractPeriod}</td>
+                <td>{format(new Date(item.contractPeriod), 'dd MMM yyyy')}</td>
                 <td>{item.cropYear}</td>
                 <td>{item.price}</td>
                 <td>
