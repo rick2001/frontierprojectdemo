@@ -14,7 +14,7 @@ export const ProductForm = () => {
   const navigate = useNavigate();
 
   // state variable to store the data
-  const [newData, setNewData] = useState({ productId: product.length + 1, productName: "", contractPeriod: "", cropYear: "", price: "" })
+  const [newData, setNewData] = useState({ productId: product.length + 1, productName: "", contractPeriodStart: "", contractPeriodEnd:"", cropYear: "", price: "" })
 
   // set the data of the form in the state variable
   const handleOnChange = (e) => {
@@ -25,13 +25,13 @@ export const ProductForm = () => {
   const handleOnClick = () => {
     console.log("New Data-> ",newData);
     dispatch(addProduct(newData));
-    setNewData({ productId: "", productName: "", contractPeriod: "", cropYear: "", price: "" })  // making the fields empty after saving
+    setNewData({ productId: "", productName: "", contractPeriodStart: "", contractPeriodEnd: "", cropYear: "", price: "" })  // making the fields empty after saving
     navigate("/")
   }
 
   // resetting the form
   const handleOnReset = () => {
-    setNewData({ productId: product.length + 1, productName: "", contractPeriod: "", cropYear: "", price: "" })
+    setNewData({ productId: product.length + 1, productName: "", contractPeriodStart: "", contractPeriodEnd:"", cropYear: "", price: "" })
   }
 
   const years = [2024, 2025, 2026, 2027, 2028];
@@ -62,8 +62,13 @@ export const ProductForm = () => {
         </div> */}
 
         <div className="form-group fw-bold">
-          <label className="form-label" htmlFor="contractPeriod">Contract Period:</label>
-          <input type="date" className="form-control" value={newData.contractPeriod} id="contractPeriod" onChange={handleOnChange} />
+          <label className="form-label" htmlFor="contractPeriodStart">Contract Period Start:</label>
+          <input type="date" className="form-control" value={newData.contractPeriodStart} id="contractPeriodStart" onChange={handleOnChange} />
+        </div>
+
+        <div className="form-group fw-bold">
+          <label className="form-label" htmlFor="contractPeriodEnd">Contract Period End:</label>
+          <input type="date" className="form-control" value={newData.contractPeriodEnd} id="contractPeriodEnd" min={newData.contractPeriodStart} onChange={handleOnChange} />
         </div>
 
 

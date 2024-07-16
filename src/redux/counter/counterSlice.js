@@ -7,10 +7,10 @@ const initialState = {
   //   { productId: 4, productName: 'Daal', contractPeriod: 'Jan 24', cropYear: '2023', price: '700' }
   // ]
   products: [
-    { productId: 1, productName: 'Wheat', contractPeriod: '2024-08-24', cropYear: '2023', price: '1000' },
-    { productId: 2, productName: 'Corn', contractPeriod: '2024-08-24', cropYear: '2024', price: '800' },
-    { productId: 3, productName: 'Rice', contractPeriod: '2024-09-24', cropYear: '2024', price: '1200' },
-    { productId: 4, productName: 'Daal', contractPeriod: '2024-01-24', cropYear: '2023', price: '700' }
+    { productId: 1, productName: 'Wheat', contractPeriodStart: '2024-08-24', contractPeriodEnd: '2024-10-24', cropYear: '2025', price: '1000' },
+    { productId: 2, productName: 'Corn', contractPeriodStart: '2024-08-24', contractPeriodEnd: '2024-12-24', cropYear: '2025', price: '800' },
+    { productId: 3, productName: 'Rice', contractPeriodStart: '2024-09-24', contractPeriodEnd: '2024-12-24', cropYear: '2025', price: '1200' },
+    { productId: 4, productName: 'Daal', contractPeriodStart: '2024-01-24', contractPeriodEnd: '2024-12-24', cropYear: '2026', price: '700' }
   ]
 }
 
