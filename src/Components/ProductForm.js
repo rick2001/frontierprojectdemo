@@ -14,7 +14,7 @@ export const ProductForm = () => {
   const navigate = useNavigate();
 
   // state variable to store the data
-  const [newData, setNewData] = useState({ productId: product.length + 1, productName: "", contractPeriodStart: "", contractPeriodEnd:"", cropYear: "", price: "" })
+  const [newData, setNewData] = useState({ productId: product.length + 1, productName: "", contractPeriodStart: "", contractPeriodEnd: "", cropYear: "", price: "" })
 
   // set the data of the form in the state variable
   const handleOnChange = (e) => {
@@ -23,7 +23,7 @@ export const ProductForm = () => {
 
   // function to add the data
   const handleOnClick = () => {
-    console.log("New Data-> ",newData);
+    console.log("New Data-> ", newData);
     dispatch(addProduct(newData));
     setNewData({ productId: "", productName: "", contractPeriodStart: "", contractPeriodEnd: "", cropYear: "", price: "" })  // making the fields empty after saving
     navigate("/")
@@ -31,12 +31,12 @@ export const ProductForm = () => {
 
   // resetting the form
   const handleOnReset = () => {
-    setNewData({ productId: product.length + 1, productName: "", contractPeriodStart: "", contractPeriodEnd:"", cropYear: "", price: "" })
+    setNewData({ productId: product.length + 1, productName: "", contractPeriodStart: "", contractPeriodEnd: "", cropYear: "", price: "" })
   }
 
-  const years = [2024, 2025, 2026, 2027, 2028];
+  const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030];
   return (
-    <div className='container my-5'>
+    <div className='container my-5' style={{ width: "45%" }}>
       <h1 className='text-center'>Add New Product</h1>
       <form>
         {/* <div className="mb-3">
@@ -53,7 +53,7 @@ export const ProductForm = () => {
 
         <div className="form-group fw-bold">
           <label className="form-label" htmlFor="productName">Product Name:</label>
-          <input type="text" className="form-control" value={newData.productName} id="productName" onChange={handleOnChange} />
+          <input type="text" className="form-control" value={newData.productName} id="productName" placeholder='Enter Product Name' onChange={handleOnChange} />
         </div>
 
         {/* <div className="form-group fw-bold">
@@ -90,13 +90,17 @@ export const ProductForm = () => {
 
 
         <div className="form-group fw-bold">
-          <label className="form-label" htmlFor="price">Price:</label>
-          <input type="text" className="form-control" value={newData.price} id="price" onChange={handleOnChange} />
+          <label className="form-label" htmlFor="price">Price(&#8377;):</label>
+          <input type="number" className="form-control" value={newData.price} id="price" placeholder='Enter Product price' onChange={handleOnChange} />
         </div>
 
       </form>
-      <button disabled={newData.productName.length === 0 || newData.contractPeriod.length === 0 || newData.cropYear.length === 0 || newData.price.length === 0} className="btn btn-primary mt-3 mx-2" onClick={handleOnClick}>Save</button>
-      <button className="btn btn-warning mt-3 mx-2" onClick={handleOnReset}>Reset</button>
+
+
+      <div className='text-center'>
+        <button disabled={newData.productName.length === 0 || newData.contractPeriodStart.length === 0 || newData.contractPeriodEnd.length === 0 || newData.cropYear.length === 0 || newData.price.length === 0} className="btn btn-primary mt-3 mx-2" onClick={handleOnClick}>Save</button>
+        <button className="btn btn-warning mt-3 mx-2" onClick={handleOnReset}>Reset</button>
+      </div>
 
 
 

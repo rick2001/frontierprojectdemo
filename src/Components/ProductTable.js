@@ -61,7 +61,7 @@
     }
 
 
-    const years = [2024, 2025, 2026, 2027, 2028];
+    const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030];
 
 
     return (
@@ -117,8 +117,8 @@
                   </div>
 
                   <div className="form-group fw-bold">
-                    <label htmlFor="price">Price (&#8377;):</label>
-                    <input type="text" className="form-control" value={editData.price} id="price" onChange={handleOnChange} />
+                    <label htmlFor="price">Price(&#8377;):</label>
+                    <input type="number" className="form-control" value={editData.price} id="price" onChange={handleOnChange} />
                   </div>
 
                 </form>
@@ -152,7 +152,6 @@
                 return <tr key={index}>
                   <td>{item.productName}</td>
                   <td>{`${format(new Date(item.contractPeriodStart), 'dd MMM yyyy')} - ${format(new Date(item.contractPeriodEnd), 'dd MMM yyyy')}`}</td>
-                  {/* <td>{`${new Date(item.contractPeriodStart).toDateString()} - ${new Date(item.contractPeriodEnd).toDateString()}`}</td> */}
                   <td>{item.cropYear}</td>
                   <td>{item.price}</td>
                   <td>
